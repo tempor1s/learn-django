@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.db.models import F
 
 from .models import Question
 
@@ -38,7 +39,8 @@ def vote(request, question_id):
         
         return render(request, 'polls/detail.html', )
     else:
-        selected_choice.votes += 1
+        # Use F to fix race condition
+        selected_choice.votes = F('votes') + 1
         selected_choice.save()
 
         return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
