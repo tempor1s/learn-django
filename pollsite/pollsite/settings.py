@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # My apps
-    'polls.apps.PollsConfig'
+    'polls.apps.PollsConfig',
+    'pizza.apps.PizzaConfig'
 ]
 
 MIDDLEWARE = [
