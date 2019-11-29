@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # api
+    path('api/', include('api.urls')),
+
+    # views
     path('polls/', include('polls.urls')),
     path('pizza/', include('pizza.urls')),
     path('admin/', admin.site.urls)
